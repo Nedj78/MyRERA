@@ -16,11 +16,8 @@ const updateClock = () => {
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
 
-    const colon = (seconds % 2 === 0) ? ":" : `<span style="visibility:hidden">:</span>`;
-    const secondsColon = (seconds % 2 === 0) ? `<span style="color:red">:</span>` : `<span style="visibility:hidden">:</span>`;
-
     const formattedTime = `
-        ${formatTime(hours)}${colon}${formatTime(minutes)}${secondsColon}<span style="color:red">${formatTime(seconds)}</span>
+        ${formatTime(hours)}:${formatTime(minutes)}:<span style="color:red">${formatTime(seconds)}</span>
     `;
 
     currentTime.innerHTML = formattedTime;
