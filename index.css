@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #82787857;
+}
+
+.train-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+.train-arrivals, .traffic-status {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.train-arrivals {
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.train-arrivals > h2 {
+    margin: 0 0 0 10px;
+}
+
+.train-info {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.train-info:last-child {
+    border-bottom: none;
+}
+
+.train-time {
+    margin: 10px 0 0 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff2b2b;
+    justify-content: right;
+}
+
+.train-destination {
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    color: #666;
+}
+
+.traffic-status {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.status {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.announcements ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.announcements li {
+    margin-bottom: 10px;
+}
+
+#time-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #bdc0c4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 0;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #828a90;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #545b62;
+    transform: translateY(0);
+}
+
+.time {
+    background-color: black;
+    border-radius: 10px;
+    width: 5.5vw;
+}
+
+.current-time {
+    padding: 0 10px;
+    color: white;
+    font-weight: 800;
+    font-size: 1em;
+    font-family: Arial, sans-serif;}

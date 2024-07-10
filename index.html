@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafic RER A</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="train-container">
+        <div class="train-arrivals">
+            <img src="./images/logo_rer_a.jpg" alt="Image" height="80px" width="80px">
+            <h2>Next trains</h2>
+            <div class="train-list">
+                <div class="train-info">
+                    <div class="train-time">08:30</div>
+                    <div class="train-destination">Code: Gare du Nord</div>
+                </div>
+                <div class="train-info">
+                    <div class="train-time">08:45</div>
+                    <div class="train-destination">Code: Châtelet - Les Halles</div>
+                </div>
+                <div class="train-info">
+                    <div class="train-time">08:45</div>
+                    <div class="train-destination">Code: Châtelet - Les Halles</div>
+                </div>
+                <div class="train-info">
+                    <div class="train-time">08:45</div>
+                    <div class="train-destination">Code: Châtelet - Les Halles</div>
+                </div>
+                <div class="train-info">
+                    <div class="train-time">08:45</div>
+                    <div class="train-destination">Code: Châtelet - Les Halles</div>
+                </div>
+            </div>
+        </div>
+        <div class="traffic-status">
+            <div id="time-container">
+                <div class="rld-page">
+                    <button><img src="./images/rld_icon.png" alt="reload page" width="20px" height="20px"></button>
+                </div>
+                <div class="time">
+                    <p class="current-time"></p>
+                </div>
+            </div>
+            <h2>Traffic status</h2>
+            <div class="status"></div>
+            <div class="announcements">
+                <h2>Announcements</h2>
+                <ul>
+                    <li>Perturbation entre Nanterre et La Défense.</li>
+                    <li>Travaux de maintenance à Saint-Lazare ce weekend.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
