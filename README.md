@@ -12,5 +12,5 @@ Backend host server: [Ile De France Mobilité](https://prim.iledefrance-mobilite
 
 Frontend host servers:
 
-jekyll (Github pages)
-now (Vercel platform)
+- jekyll (Github pages)
+- now (Vercel platform)
