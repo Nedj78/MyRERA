@@ -1,12 +1,11 @@
 const currentTime = document.querySelector('.current-time');
 const reloadPage = document.querySelector('.rld-page');
-let lineStatus = document.querySelector('.status');
+const statusPhrase = document.querySelector('.status');
+const announcementPhrase = document.querySelector('.announcement');
 
-const formatTime = (time) => {
-    return time < 10 ? `0${time}` : time;
-};
+const formatTime = (time) => (time < 10 ? `0${time}` : time);
 
-reloadPage.addEventListener('click', function() {
+reloadPage.addEventListener('click', () => {
     window.location.reload();
 });
 
@@ -17,7 +16,7 @@ const updateClock = () => {
     const seconds = now.getSeconds();
 
     const formattedTime = `
-        ${formatTime(hours)}:${formatTime(minutes)}:<span style="color:red">${formatTime(seconds)}</span>
+        ${formatTime(hours)} : ${formatTime(minutes)} : <span style="color:red">${formatTime(seconds)}</span>
     `;
 
     currentTime.innerHTML = formattedTime;
@@ -33,44 +32,86 @@ const fetchTrafficData = () => {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            return response.json(); 
-        })
-        .then(data => {
-            console.log('api results:', data)
-            displayTrafficStatus(data);
-        })
-        .catch(error => {
-            console.error('An error occurred:', error);
-            lineStatus.textContent = 'Failure while retrieving data. Please check your internet connection and try again.';
-            lineStatus.style.color = 'red';
-            lineStatus.style.fontSize = '10pt';
-        });
-}
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('TrafficStatus:', data);
+        displayTrafficStatus(data);
+    })
+    .catch(error => {
+        console.error('An error occurred:', error);
+        statusPhrase.textContent = 'Failure while retrieving data. Please check your internet connection and try again.';
+        statusPhrase.style.color = 'red';
+        statusPhrase.style.fontSize = '10pt';
+    });
+};
 
-const smoothTraffic = `Traffic is clear.`;
+const smoothTraffic = 'All is clear.';
 
-const displayTrafficStatus = (data) => {
-    lineStatus.innerHTML = ''; 
+const displayTrafficStatus = (status) => {
+    statusPhrase.innerHTML = '';
 
-    const generalMessageDelivery = data?.Siri?.ServiceDelivery?.GeneralMessageDelivery?.[0]?.InfoMessage?.[0] ?? null;
-    console.log('Alert: ', generalMessageDelivery);
+    const StatusDeliveryMessage = status?.Siri?.ServiceDelivery?.GeneralMessageDelivery?.[0]?.InfoMessage?.[0] ?? null;
+    console.log('StatusDeliveryMessage:', StatusDeliveryMessage);
 
-    if (!generalMessageDelivery) {
-        lineStatus.textContent = smoothTraffic;
-        lineStatus.style.color = 'green';
+    if (!StatusDeliveryMessage) {
+        statusPhrase.textContent = smoothTraffic;
+        statusPhrase.style.color = 'green';
     } else {
-        lineStatus.textContent = `<p style="color:red">Disrupted traffic:</p>\n` + generalMessageDelivery.Content;
+        statusPhrase.innerHTML = `<p style="color:red">Disrupted traffic:</p>\n${StatusDeliveryMessage.Content}`;
     }
-    lineStatus.style.fontSize = '12pt';
-}
+    statusPhrase.style.fontSize = '12pt';
+};
+
+const fetchGeneralAnnouncement = () => {
+    fetch('https://prim.iledefrance-mobilites.fr/marketplace/disruptions_bulk/disruptions/v2', {
+        headers: {
+            'apiKey': 'e4LffmFrHh1EDYzQecdMQHITH0xSdIuI',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('DisruptionAnnouncement:', data);
+        displayGeneralAnnouncement(data);
+    })
+    .catch(error => {
+        console.error('An error occurred:', error);
+    });
+};
+
+const displayGeneralAnnouncement = (announcement) => {
+    announcementPhrase.innerHTML = '';
+
+    const RER_A_LineID = '595d0138-070e-11ef-bcf2-0a58a9feac02';
+    const LineID = announcement?.id;
+
+    const generalAnnouncementTitle = announcement?.applicationPeriods?.title ?? '';
+    const generalAnnouncementLastUpdate = announcement?.applicationPeriods?.lastUpdate ?? '';
+    const generalAnnouncementCause = announcement?.applicationPeriods?.cause ?? '';
+    const generalAnnouncementMessage = announcement?.applicationPeriods?.message ?? '';
+
+    if (LineID !== RER_A_LineID) {
+        announcementPhrase.innerHTML = '&nbsp;&nbsp;Nothing to report today 😀';
+    } else {
+        announcementPhrase.innerHTML = `&nbsp;&nbsp;${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
+    }
+    announcementPhrase.style.fontSize = '10pt';
+};
 
 fetchTrafficData();
+fetchGeneralAnnouncement();
 setInterval(fetchTrafficData, 200000);
-
+setInterval(fetchGeneralAnnouncement, 200000);
 
 
 // tokenAPI = 'e4LffmFrHh1EDYzQecdMQHITH0xSdIuI'
