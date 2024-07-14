@@ -92,7 +92,7 @@ const fetchGeneralAnnouncement = () => {
 const displayGeneralAnnouncement = (announcement) => {
     announcementPhrase.innerHTML = '';
 
-    const randomPhrases = [
+    const randomPhrase = [
         "Traffic's flowing like melted butter!",
         "Smooth sailing on the roads today!",
         "Clear roads ahead: smooth as silk!",
@@ -130,8 +130,8 @@ const displayGeneralAnnouncement = (announcement) => {
     const generalAnnouncementMessage = announcement?.applicationPeriods?.message ?? '';
 
     if (LineID !== RER_A_LineID) {
-        const randomIndex = Math.floor(Math.random() * randomPhrases.length);
-        announcementPhrase.innerHTML = `&nbsp;&nbsp;${randomPhrases[randomIndex]}`;    } else {
+        const randomIndex = Math.floor(Math.random() * randomPhrase.length);
+        announcementPhrase.innerHTML = `&nbsp;&nbsp;${randomPhrase[randomIndex]}`;    } else {
         announcementPhrase.innerHTML = `&nbsp;&nbsp;⚠️ ${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
     }
     announcementPhrase.style.fontSize = '10pt';
@@ -159,8 +159,9 @@ setInterval(fetchGeneralAnnouncement, 200000);
 /* 'MESSAGE GENERAL (STATUT) pour ligne RER A' = 'https://prim.iledefrance-mobilites.fr/marketplace/general-message?LineRef=STIF%3ALine%3A%3AC01742%3A'
 https://prim.iledefrance-mobilites.fr/apis/idfm-ivtr-info_trafic */
 
-// 'stopPoint' pour Achères-ville = 'STIF:StopPoint:Q:8768235:'
+// 'stopPointRef' pour Achères-ville = 'STIF:StopPoint:Q:41528:'
 // 'stop_id' pour Achères-ville = 'IDFM:35087'
+// Jeux de données plateforme d'échanges : 'https://data.iledefrance.fr/explore/dataset/perimetre-des-donnees-temps-reel-disponibles-sur-la-plateforme-dechanges-stif/table/?q=ach%C3%A8res'
 // Jeux de données gares: 'https://prim.iledefrance-mobilites.fr/jeux-de-donnees/emplacement-des-gares-idf-data-generalisee'
 // Jeux de données arrêts: 'https://prim.iledefrance-mobilites.fr/jeux-de-donnees/arrets-lignes'
 
