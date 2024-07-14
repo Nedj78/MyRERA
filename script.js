@@ -50,7 +50,7 @@ const fetchTrafficData = () => {
     });
 };
 
-const smoothTraffic = 'All is clear.';
+const smoothTraffic = '🟢 Clear.';
 
 const displayTrafficStatus = (status) => {
     statusPhrase.innerHTML = '';
@@ -62,7 +62,7 @@ const displayTrafficStatus = (status) => {
         statusPhrase.innerHTML = '&nbsp;&nbsp;' + smoothTraffic;
         statusPhrase.style.color = 'green';
     } else {
-        statusPhrase.innerHTML = `<p style="color:red">Disrupted traffic:</p>\n${StatusDeliveryMessage.Content}`;
+        statusPhrase.innerHTML = `<p style="color:red">🔴 Disrupted traffic:</p>\n${StatusDeliveryMessage.Content}`;
     }
     statusPhrase.style.fontSize = '12pt';
 };
@@ -92,6 +92,35 @@ const fetchGeneralAnnouncement = () => {
 const displayGeneralAnnouncement = (announcement) => {
     announcementPhrase.innerHTML = '';
 
+    const randomPhrases = [
+        "Traffic's flowing like melted butter!",
+        "Smooth sailing on the roads today!",
+        "Clear roads ahead: smooth as silk!",
+        "Traffic's lighter than a feather today!",
+        "The roads are as clear as a Sunday morning drive!",
+        "Traffic's a breeze today, like sailing on calm seas!",
+        "Smooth roads ahead: like driving on a cloud!",
+        "Traffic's as light as a feather today!",
+        "The train is smoother than a jazz melody!",
+        "Driving today is a breeze!",
+        "Navigating traffic like a pro!",
+        "The roads are wide open!",
+        "Traffic's flowing like a gentle stream!",
+        "Easy driving today: like a Sunday afternoon stroll!",
+        "No traffic jams in sight!",
+        "The roads are clear as crystal!",
+        "Smooth sailing on the asphalt seas!",
+        "Driving today feels like winning a race!",
+        "Cruising with no obstacles!",
+        "Traffic's on vacation today!",
+        "The train is stress-free!",
+        "The roads are singing a happy tune!",
+        "Smooth traffic: no worries, just driving!",
+        "Like driving through an empty city!",
+        "Traffic's lighter than a cloud!",
+        "The journey is a walk in the park!"
+    ];
+
     const RER_A_LineID = '595d0138-070e-11ef-bcf2-0a58a9feac02';
     const LineID = announcement?.id;
 
@@ -101,19 +130,23 @@ const displayGeneralAnnouncement = (announcement) => {
     const generalAnnouncementMessage = announcement?.applicationPeriods?.message ?? '';
 
     if (LineID !== RER_A_LineID) {
-        announcementPhrase.innerHTML = '&nbsp;&nbsp;✅ Nothing to report today.';
-    } else {
+        const randomIndex = Math.floor(Math.random() * randomPhrases.length);
+        announcementPhrase.innerHTML = `&nbsp;&nbsp;${randomPhrases[randomIndex]}`;    } else {
         announcementPhrase.innerHTML = `&nbsp;&nbsp;⚠️ ${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
     }
     announcementPhrase.style.fontSize = '10pt';
     announcementPhrase.style.color = 'green';
 };
 
+
+
 fetchTrafficData();
 fetchGeneralAnnouncement();
 
 setInterval(fetchTrafficData, 200000);
 setInterval(fetchGeneralAnnouncement, 200000);
+
+
 
 
 // tokenAPI = 'e4LffmFrHh1EDYzQecdMQHITH0xSdIuI'
@@ -123,8 +156,15 @@ setInterval(fetchGeneralAnnouncement, 200000);
 // PERTURBATIONS GENERALES = 'https://prim.iledefrance-mobilites.fr/marketplace/disruptions_bulk/disruptions/v2'
 // 'DisruptionsID' pour ligne RER A = '595d0138-070e-11ef-bcf2-0a58a9feac02'
 
-/* 'MESSAGE GENERAL pour ligne RER A' = 'https://prim.iledefrance-mobilites.fr/marketplace/general-message?LineRef=STIF%3ALine%3A%3AC01742%3A'
+/* 'MESSAGE GENERAL (STATUT) pour ligne RER A' = 'https://prim.iledefrance-mobilites.fr/marketplace/general-message?LineRef=STIF%3ALine%3A%3AC01742%3A'
 https://prim.iledefrance-mobilites.fr/apis/idfm-ivtr-info_trafic */
 
-// 'stopPoint' pour Achères-ville  = 'STIF:StopPoint:Q:8768235:'
+// 'stopPoint' pour Achères-ville = 'STIF:StopPoint:Q:8768235:'
+// 'stop_id' pour Achères-ville = 'IDFM:35087'
+// Jeux de données gares: 'https://prim.iledefrance-mobilites.fr/jeux-de-donnees/emplacement-des-gares-idf-data-generalisee'
+// Jeux de données arrêts: 'https://prim.iledefrance-mobilites.fr/jeux-de-donnees/arrets-lignes'
+
+/* PASSAGES EN TEMPS REEL POUR RER A = 'https://prim.iledefrance-mobilites.fr/marketplace/estimated-timetable?LineRef=STIF%3ALine%3A%3AC01742%3A' 
+https://prim.iledefrance-mobilites.fr/apis/idfm-ivtr-requete_globale */
+
 
