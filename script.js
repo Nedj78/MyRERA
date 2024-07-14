@@ -59,7 +59,7 @@ const displayTrafficStatus = (status) => {
     console.log('StatusDeliveryMessage:', StatusDeliveryMessage);
 
     if (!StatusDeliveryMessage) {
-        statusPhrase.textContent = smoothTraffic;
+        statusPhrase.innerHTML = '&nbsp;&nbsp;' + smoothTraffic;
         statusPhrase.style.color = 'green';
     } else {
         statusPhrase.innerHTML = `<p style="color:red">Disrupted traffic:</p>\n${StatusDeliveryMessage.Content}`;
@@ -101,15 +101,17 @@ const displayGeneralAnnouncement = (announcement) => {
     const generalAnnouncementMessage = announcement?.applicationPeriods?.message ?? '';
 
     if (LineID !== RER_A_LineID) {
-        announcementPhrase.innerHTML = '&nbsp;&nbsp;Nothing to report today 😀';
+        announcementPhrase.innerHTML = '&nbsp;&nbsp;✅ Nothing to report today.';
     } else {
-        announcementPhrase.innerHTML = `&nbsp;&nbsp;${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
+        announcementPhrase.innerHTML = `&nbsp;&nbsp;⚠️ ${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
     }
     announcementPhrase.style.fontSize = '10pt';
+    announcementPhrase.style.color = 'green';
 };
 
 fetchTrafficData();
 fetchGeneralAnnouncement();
+
 setInterval(fetchTrafficData, 200000);
 setInterval(fetchGeneralAnnouncement, 200000);
 

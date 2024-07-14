@@ -7,8 +7,10 @@ body {
 
 .train-container {
     display: flex;
+    flex-direction: column;
     max-width: 1000px;
     margin: 50px auto;
+    padding: 10px;
 }
 
 .train-arrivals, .traffic-status {
@@ -16,15 +18,12 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.train-arrivals {
-    margin-right: 20px;
+    margin-bottom: 20px;
     padding: 20px;
 }
 
-.train-arrivals > h2 {
-    margin: 0 0 0 10px;
+.train-arrivals > h2, .traffic-status > h2 {
+    margin: 0 0 20px 10px;
 }
 
 .train-info {
@@ -41,20 +40,12 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #ff2b2b;
-    justify-content: right;
 }
 
 .train-destination {
     margin: 10px 0 0 0;
     font-size: 18px;
     color: #666;
-}
-
-.traffic-status {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .status {
@@ -75,6 +66,8 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 button {
@@ -83,7 +76,6 @@ button {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 0;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
@@ -100,16 +92,185 @@ button:active {
 }
 
 .time {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
     background-color: black;
     border-radius: 10px;
     width: 8vw;
+    height: 3vh;
+    padding: 10px;
 }
 
 .current-time {
-    padding: 0 10px;
     color: white;
     font-weight: 800;
     font-size: 1em;
-    font-family: Arial, sans-serif;
     text-align: center;
+}
+
+/* Media Queries */
+
+/* Smartphones */
+@media (max-width: 599px) {
+    .train-container {
+        padding: 10px;
+    }
+
+    .train-time {
+        font-size: 20px;
+    }
+
+    .train-destination {
+        font-size: 16px;
+    }
+
+    .time {
+        width: 35vw;
+        height: 6vh;
+        padding: 5px;
+    }
+
+    .current-time {
+        font-size: 1em;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 600px) and (max-width: 899px) {
+    .train-container {
+        flex-direction: column;
+        max-width: 800px;
+    }
+
+    .train-arrivals, .traffic-status {
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .train-time {
+        font-size: 22px;
+    }
+
+    .train-destination {
+        font-size: 18px;
+    }
+
+    .time {
+        width: 30vw;
+        height: 4vh;
+        width: 20vw;
+        padding: 10px;
+    }
+
+    .current-time {
+        font-size: 1em;
+    }
+}
+
+/* Grandes tablettes */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .train-container {
+        flex-direction: row;
+        max-width: 1200px;
+    }
+
+    .train-arrivals, .traffic-status {
+        margin-bottom: 0;
+        margin-right: 20px;
+        padding: 30px;
+    }
+
+    .train-arrivals:last-child {
+        margin-right: 0;
+    }
+
+    .train-time {
+        font-size: 24px;
+    }
+
+    .train-destination {
+        font-size: 20px;
+    }
+
+    .time {
+        width: 15vw;
+        height: 3vh;
+        padding: 10px;
+    }
+
+    .current-time {
+        font-size: 1.1em;
+    }
+}
+
+/* Écrans moyens et grands */
+@media (min-width: 1200px) {
+    .train-container {
+        flex-direction: row;
+        max-width: 1200px;
+    }
+
+    .train-arrivals, .traffic-status {
+        margin-bottom: 0;
+        margin-right: 20px;
+        padding: 30px;
+    }
+
+    .train-arrivals:last-child {
+        margin-right: 0;
+    }
+
+    .train-time {
+        font-size: 24px;
+    }
+
+    .train-destination {
+        font-size: 20px;
+    }
+
+    .time {
+        width: 8vw;
+        height: 3vh;
+    }
+
+    .current-time {
+        font-size: 1.2em;
+    }
+}
+
+/* Écrans avec une résolution de 1280x720 */
+@media (min-width: 1280px) and (max-width: 1280px) and (min-height: 720px) and (max-height: 720px) {
+    .train-container {
+        flex-direction: row;
+        max-width: 1200px;
+    }
+
+    .train-arrivals, .traffic-status {
+        margin-bottom: 0;
+        margin-right: 20px;
+        padding: 30px;
+    }
+
+    .train-arrivals:last-child {
+        margin-right: 0;
+    }
+
+    .train-time {
+        font-size: 24px;
+    }
+
+    .train-destination {
+        font-size: 20px;
+    }
+
+    .time {
+        width: 10vw;
+        height: 5vh;
+        padding: 10px;
+    }
+
+    .current-time {
+        font-size: 1em;
+    }
 }
