@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTime = document.querySelector('.current-time');
     const reloadPage = document.querySelector('.rld-page');
     const statusPhrase = document.querySelector('.status');
+    const fluidTraffic = document.querySelector('.fluidTraffic');
     const announcementPhrase = document.querySelector('.announcement');
 
     const formatTime = (time) => (time < 10 ? `0${time}` : time);
@@ -142,22 +143,36 @@ document.addEventListener('DOMContentLoaded', () => {
             "The journey is a walk in the park!"
         ];
 
-        const RER_A_LineID = '595d0138-070e-11ef-bcf2-0a58a9feac02';
+        const RER_A_LineID = '0a58a9feac02';
         const LineID = announcement?.id;
-
-        const generalAnnouncementTitle = announcement?.applicationPeriods?.title ?? '';
-        const generalAnnouncementLastUpdate = announcement?.applicationPeriods?.lastUpdate ?? '';
-        const generalAnnouncementCause = announcement?.applicationPeriods?.cause ?? '';
-        const generalAnnouncementMessage = announcement?.applicationPeriods?.message ?? '';
-
-        if (LineID !== RER_A_LineID) {
+        
+        const generalAnnouncementTitle = announcement?.disruptions[0].title ?? '';
+        let generalAnnouncementLastUpdate = announcement?.disruptions[0]?.lastUpdate ?? '';
+        const generalAnnouncementCause = announcement?.disruptions[0]?.cause ?? '';
+        const generalAnnouncementMessage = announcement?.disruptions[0].message ?? '';
+        
+        if (!LineID?.includes(RER_A_LineID)) {
             const randomIndex = Math.floor(Math.random() * randomPhrase.length);
-            announcementPhrase.innerHTML = `&nbsp;&nbsp;${randomPhrase[randomIndex]}`;    
-        } else {
-            announcementPhrase.innerHTML = `&nbsp;&nbsp;⚠️ ${generalAnnouncementLastUpdate.Content}\n&nbsp;&nbsp;${generalAnnouncementTitle.Content}\n&nbsp;&nbsp;${generalAnnouncementCause.Content}: ${generalAnnouncementMessage.Content}`;
-        }
+            fluidTraffic.innerHTML = `&nbsp;&nbsp;${randomPhrase[randomIndex]}`;
+        };
+        
         announcementPhrase.style.fontSize = '10pt';
-        announcementPhrase.style.color = 'green';
+
+            const reformatDate = (date) => {
+                const year = date.substring(0, 4);
+                const month = date.substring(4, 6);
+                const day = date.substring(6, 8);
+            
+                return `${day}/${month}/${year}`;
+            }
+        
+        generalAnnouncementLastUpdate = reformatDate(generalAnnouncementLastUpdate);
+
+        announcementPhrase.innerHTML = `${generalAnnouncementLastUpdate}` + `<br><br>` + `<b>${generalAnnouncementTitle}</b>` + `<br><br>` + `⚠️ <u>${generalAnnouncementCause}</u> :` + `<br>` + `&nbsp;&nbsp;${generalAnnouncementMessage}`;
+        
+        fluidTraffic.style.fontSize = '10pt';
+        fluidTraffic.style.color = 'green';
+        announcementPhrase.style.fontSize = '10pt';
     };
 
     fetchTrafficData();
