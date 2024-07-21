@@ -125,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const displayGeneralAnnouncement = () => {
         if (!hasDisruption) {
-            console.log("yooo" + hasDisruption)
             const randomPhrase = [
                 "Traffic's flowing like melted butter!",
                 "Smooth sailing on the roads today!",
