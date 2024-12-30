@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('An error occurred:', error);
             announcementPhrase.innerHTML = 'Failed to load disruptions';
             announcementPhrase.style.color = 'red';
+            announcementPhrase.style.color = '10pt';
         }
     };
 
@@ -81,22 +82,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         statusPhrase.style.lineHeight = `25px`;
                         statusPhrase.style.color = 'red';
                     } else {
-                        statusPhrase.innerHTML = '🟢 Clear';
-                        statusPhrase.style.color = 'green';
+                        statusPhrase.innerHTML = '<iframe src="https://lottie.host/embed/74befdef-e4e1-4bfc-9c40-9053e749e7b6/TFc4Rw94em.lottie"></iframe>';
                     }
                 } else {
-                    statusPhrase.innerHTML = '🟢 Clear';
-                    statusPhrase.style.color = 'green';
+                    statusPhrase.innerHTML = '<iframe src="https://lottie.host/embed/74befdef-e4e1-4bfc-9c40-9053e749e7b6/TFc4Rw94em.lottie"></iframe>';
                 }
             } else {
-                statusPhrase.innerHTML = '🟢 Clear';
-                statusPhrase.style.color = 'green';
+                statusPhrase.innerHTML = '<iframe src="https://lottie.host/embed/74befdef-e4e1-4bfc-9c40-9053e749e7b6/TFc4Rw94em.lottie"></iframe>';
             }
         } else {
-            statusPhrase.innerHTML = '🟢 Clear';
-            statusPhrase.style.color = 'green';
+            statusPhrase.innerHTML = '<iframe src="https://lottie.host/embed/74befdef-e4e1-4bfc-9c40-9053e749e7b6/TFc4Rw94em.lottie"></iframe>';
         }
         statusPhrase.style.fontSize = '12pt';
+        statusPhrase.style.color = 'green';
     };
 
     const displayDisruptions = (data) => {

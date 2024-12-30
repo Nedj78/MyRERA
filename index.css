@@ -10,6 +10,18 @@ h3 {
     font-size: 14pt;
 }
 
+.image-container {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+}
+
+iframe {
+    border: none;
+    height: 5vh;
+    width: 5vw;
+}
+
 .train-container {
     display: flex;
     flex-direction: column;
@@ -59,7 +71,7 @@ h3 {
 }
 
 .status {
-    margin: 0 0 20px 10px;
+    margin: 0 0 20px 0;
     font-weight: bold;
 }
 

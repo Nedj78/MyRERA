@@ -9,38 +9,7 @@
 </head>
 <body>
     <div class="train-container">
-        <div class="train-arrivals">
-            <img src="./images/logo_rer_a.jpg" alt="Image" height="80px" width="80px">
-            <h2>Next trains at Achères-ville station</h2>
-            <h3>&nbsp;&nbsp;➡ Direction to Cergy-Le-Haut</h3>
-                <div class="train-list">
-                    <div class="train-info">
-                        <div class="train-time">08:30</div>
-                        <div class="train-destination">Code:</div>
-                    </div>
-                </div>
-            <h3>&nbsp;&nbsp;➡ Direction to Boissy-Saint-Léger</h3>
-                <div class="train-list">
-                    <div class="train-info">
-                        <div class="train-time">09:30</div>
-                        <div class="train-destination">Code: </div>
-                    </div>
-                </div>
-            <h3>&nbsp;&nbsp;➡ Direction to Marne-La-Vallée</h3>
-                <div class="train-list">
-                    <div class="train-info">
-                        <div class="train-time">10:30</div>
-                        <div class="train-destination">Code:</div>
-                    </div>
-                </div>
-            <h3>&nbsp;&nbsp;➡ Direction to Torcy</h3>
-                <div class="train-list">
-                    <div class="train-info">
-                        <div class="train-time">11:30</div>
-                        <div class="train-destination">Code:</div>
-                    </div>
-                </div>
-        </div>
+
         <div class="traffic-status">
             <div id="time-container">
                 <div class="rld-page">
@@ -51,11 +20,49 @@
                 </div>
             </div>
             <h2>Traffic status</h2>
-                <div class="status"></div>
+            <div class="status"></div>
             <h2>Announcement</h2>
-                <div class="announcement"></div>
+            <div class="announcement"></div>
+        </div>
+
+        <div class="train-arrivals">
+            <div class="image-container">
+                <img src="./images/logo_rer_a.jpg" alt="Image" height="80px" width="80px">
+                <img src="./images/L.png" alt="Image" height="28px" width="65px">
+            </div>
+            
+            <h2>Upcoming trains at <em>Achères-ville</em> station</h2>
+            <h3>&nbsp;&nbsp;➡ destination for <em>Cergy-Le-Haut</em> terminal</h3>
+            <div class="train-list">
+                <div class="train-info">
+                    <div class="train-time">08:30</div>
+                    <div class="train-destination">Code:</div>
+                </div>
+            </div>
+            <h3>&nbsp;&nbsp;➡ destination for <em>Boissy-Saint-Léger</em> terminal</h3>
+            <div class="train-list">
+                <div class="train-info">
+                    <div class="train-time">09:30</div>
+                    <div class="train-destination">Code: </div>
+                </div>
+            </div>
+            <h3>&nbsp;&nbsp;➡ destination for <em>Marne-La-Vallée</em> terminal</h3>
+            <div class="train-list">
+                <div class="train-info">
+                    <div class="train-time">10:30</div>
+                    <div class="train-destination">Code:</div>
+                </div>
+            </div>
+            <h3>&nbsp;&nbsp;➡ destination for <em>Torcy</em> terminal </h3>
+            <div class="train-list">
+                <div class="train-info">
+                    <div class="train-time">11:30</div>
+                    <div class="train-destination">Code:</div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
