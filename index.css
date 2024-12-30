@@ -147,6 +147,10 @@ button:active {
         font-size: 16px;
     }
 
+    iframe {
+        width: 13vw;
+    }
+
     .time {
         width: 35vw;
         height: 6vh;
