@@ -6,11 +6,11 @@ Responsiveness: medium and wide screens
 
 Framework: no
 
-Project: Fetching real-time data for the RER A train schedule
+Project: Fetching real-time traffic and timetable data for RER A trains
 
 Backend host server: [Ile De France Mobilité](https://prim.iledefrance-mobilites.fr/fr)
 
 Frontend host servers:
 
-- [jekyll (Github pages)](https://nedj78.github.io/myRERA/)
+- [jekyll (Github pages)](https://nedj78.github.io/MyRERA/)
 - [now (Vercel platform)](https://my-rera.vercel.app/)
